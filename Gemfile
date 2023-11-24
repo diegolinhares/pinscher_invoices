@@ -1,32 +1,40 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-ruby "3.2.2"
+source 'https://rubygems.org'
+ruby '3.2.2'
 
-gem "rails", "~> 7.1.2"
-gem "sprockets-rails"
-gem "pg", "~> 1.1"
-gem "puma", ">= 5.0"
-gem "importmap-rails"
-gem "turbo-rails"
-gem "stimulus-rails"
-gem "cssbundling-rails"
-gem "redis", ">= 4.0.1"
-gem "tzinfo-data", platforms: %i[ windows jruby ]
-gem "bootsnap", require: false
+# Essential
+gem 'bootsnap', require: false
+gem 'pg', '~> 1.1'
+gem 'puma', '>= 5.0'
+gem 'rails', '~> 7.1.2'
+gem 'redis', '>= 4.0.1'
+gem 'tzinfo-data', platforms: %i[windows jruby]
+
+# Front-end and assets
+gem 'cssbundling-rails'
+gem 'importmap-rails'
+gem 'sprockets-rails'
+gem 'stimulus-rails'
+gem 'turbo-rails'
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri windows ]
-  gem "factory_bot_rails"
-  gem "fuubar"
-  gem "rspec-rails"
+  gem 'debug', platforms: %i[mri windows]
+  gem 'factory_bot_rails'
+  gem 'fuubar'
+  gem 'rspec-rails', require: false
 end
 
 group :development do
-  gem "brakeman"
-  gem "bundler-audit"
-  gem "web-console"
+  gem 'brakeman', require: false
+  gem 'bundler-audit', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'web-console'
 end
 
 group :test do
-  gem "shoulda-matchers"
+  gem 'shoulda-matchers', require: false
 end
