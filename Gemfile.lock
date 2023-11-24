@@ -80,6 +80,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
+    brakeman (6.0.1)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
@@ -246,6 +247,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  brakeman
   cssbundling-rails
   debug
   factory_bot_rails

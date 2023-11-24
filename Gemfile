@@ -22,10 +22,10 @@ group :development, :test do
 end
 
 group :development do
+  gem "brakeman"
   gem "web-console"
 end
 
 group :test do
   gem "shoulda-matchers"
 end
-
