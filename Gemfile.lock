@@ -284,6 +284,7 @@ GEM
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
     stringio (3.0.9)
+    test-prof (1.3.0)
     thor (1.3.0)
     timeout (0.4.1)
     turbo-rails (1.5.0)
@@ -338,6 +339,7 @@ DEPENDENCIES
   simplecov
   sprockets-rails
   stimulus-rails
+  test-prof
   turbo-rails
   tzinfo-data
   u-case (~> 4.5.1)
