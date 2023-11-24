@@ -104,6 +104,8 @@ GEM
     factory_bot_rails (6.4.2)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
+    faker (3.2.2)
+      i18n (>= 1.8.11, < 2)
     fuubar (2.5.1)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
@@ -295,6 +297,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   factory_bot_rails
+  faker
   fuubar
   importmap-rails
   pg (~> 1.1)
