@@ -26,6 +26,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'fuubar'
+  gem 'lefthook'
   gem 'rspec-rails', require: false
 end
 

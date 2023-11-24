@@ -132,6 +132,7 @@ GEM
     json (2.6.3)
     kind (5.10.0)
     language_server-protocol (3.17.0.3)
+    lefthook (1.5.3)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -323,6 +324,7 @@ DEPENDENCIES
   faker
   fuubar
   importmap-rails
+  lefthook
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.2)

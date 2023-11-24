@@ -1,0 +1,16 @@
+pre-push:
+  commands:
+    audit:
+      run: bundle exec bundler-audit --update
+    zeitwerk:
+      run: bin/rails zeitwerk:check
+    brakeman:
+      run: bundle exec brakeman -q -w2
+
+pre-commit:
+  parallel: true
+  commands:
+    rubocop:
+      run: bundle exec rubocop --parallel
+    rspec:
+      run: bundle exec rspec
