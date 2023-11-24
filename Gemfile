@@ -18,6 +18,9 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 
+# Application
+gem 'u-case', '~> 4.5.1'
+
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]
   gem 'factory_bot_rails'

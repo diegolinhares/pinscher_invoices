@@ -130,6 +130,7 @@ GEM
       rdoc
       reline (>= 0.3.8)
     json (2.6.3)
+    kind (5.10.0)
     language_server-protocol (3.17.0.3)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -290,6 +291,11 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    u-attributes (2.8.0)
+      kind (>= 4.0, < 6.0)
+    u-case (4.5.2)
+      kind (>= 5.6, < 6.0)
+      u-attributes (>= 2.7, < 3.0)
     unicode-display_width (2.5.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
@@ -332,6 +338,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  u-case (~> 4.5.1)
   web-console
 
 RUBY VERSION
