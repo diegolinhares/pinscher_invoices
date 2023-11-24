@@ -3,6 +3,8 @@
 class User < ::ApplicationRecord
   encrypts :email, deterministic: true
 
+  has_many :tokens, dependent: :destroy
+
   validates :email,
             presence: true,
             uniqueness: { case_sensitive: false },
