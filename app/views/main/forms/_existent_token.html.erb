@@ -1,0 +1,14 @@
+<%= render "remote_modal", title: "Existent Token" do %>
+  <p>
+    A new token will be sent to your email <b><%= email %></b> if you confirm below.
+    This step is crucial for maintaining the security of your account.
+    The new token will only replace the current one after you activate the link sent in the email.
+  </p>
+
+  <% content_for :modal_footer do %>
+    <%= form_with(url: tokens_resend_path, method: :post) do |form| %>
+      <%= form.hidden_field :email, value: email %>
+      <%= form.submit "Confirm", class: "button is-success" %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -10,7 +10,7 @@
         <%= yield %>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success">Confirm</button>
+        <%= yield :modal_footer %>
         <button class="button" data-action="click->remote-modal#close">Cancel</button>
       </footer>
     </div>
