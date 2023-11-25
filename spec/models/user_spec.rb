@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'associations' do
-    it { is_expected.to have_many(:tokens) }
+    it { is_expected.to have_one(:token) }
   end
 
   describe 'validations' do

@@ -9,3 +9,9 @@ Style/Documentation:
 
 Metrics/BlockLength:
   Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: False
+
+RSpec/MultipleExpectations:
+  Enabled: False
