@@ -28,7 +28,7 @@ module Tokens
 
       ::Token.create(token_value:, user:, expires_at: 24.hours.from_now)
 
-      Success(:ok, result: { user:, token_value: })
+      Success(:ok, result: { user: })
     end
   end
 end

@@ -32,4 +32,27 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#token_value' do
+    context 'when the user has a token' do
+      it 'returns the token value' do
+        # Arrange
+        user = create(:user)
+        token = create(:token, user:)
+
+        # Act/Assert
+        expect(user.token_value).to eq(token.token_value)
+      end
+    end
+
+    context 'when the user does not have a token' do
+      it 'raises an ::Module::DelegationError' do
+        # Arrange
+        user = create(:user)
+
+        # Act/Assert
+        expect { user.token_value }.to raise_error(::Module::DelegationError)
+      end
+    end
+  end
 end

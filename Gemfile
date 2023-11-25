@@ -35,6 +35,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'brakeman', require: false
   gem 'bundler-audit', require: false
+  gem 'letter_opener'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false

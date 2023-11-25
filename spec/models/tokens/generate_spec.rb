@@ -49,7 +49,7 @@ RSpec.describe Tokens::Generate, type: :use_case do
       # Assert
       expect(result).to be_success
       expect(result[:user]).to be_persisted
-      expect(result[:token_value]).to be_present
+      expect(result[:user].token).to be_present
     end
   end
 end
