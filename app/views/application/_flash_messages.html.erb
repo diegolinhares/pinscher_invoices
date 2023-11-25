@@ -1,0 +1,6 @@
+<% flash.each do |key, value| %>
+  <div data-controller="flash" class="<%= flash_class(key) %>">
+    <%= value %>
+    <button class="delete" data-action="click->flash#dismiss"></button>
+  </div>
+<% end %>

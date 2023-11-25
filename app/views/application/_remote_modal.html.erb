@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "remote_modal" do %>
+  <div data-controller="remote-modal" class="modal is-active fade-in">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title"><%= title %></p>
+        <button class="delete" aria-label="close" data-action="click->remote-modal#close"></button>
+      </header>
+      <section id="remote-modal-body" class="modal-card-body">
+        <%= yield %>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Confirm</button>
+        <button class="button" data-action="click->remote-modal#close">Cancel</button>
+      </footer>
+    </div>
+  </div>
+<% end %>
