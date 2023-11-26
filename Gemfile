@@ -21,6 +21,7 @@ gem 'turbo-rails'
 # Application
 gem 'money-rails'
 gem 'pagy'
+gem 'prawn'
 gem 'u-case', '~> 4.5.1'
 
 group :development, :test do
