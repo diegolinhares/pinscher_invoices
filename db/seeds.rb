@@ -10,13 +10,17 @@ end
 
 if ::Invoice.count < 200
   200.times do
-    ::Invoice.create!(
+    invoice = ::Invoice.create!(
       user:,
       company: ::Faker::Company.name,
       billing_to: ::Faker::Company.name,
       total_value: ::Faker::Number.number(digits: 4),
-      issue_date: ::Faker::Date.in_date_period,
-      emails: [::Faker::Internet.email]
+      issue_date: ::Faker::Date.in_date_period
+    )
+
+    ::InvoiceEmail.create!(
+      invoice:,
+      email: ::Faker::Internet.email
     )
   end
 end

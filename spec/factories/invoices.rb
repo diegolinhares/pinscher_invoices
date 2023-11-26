@@ -6,7 +6,6 @@ FactoryBot.define do
     company { ::Faker::Company.name }
     billing_to { ::Faker::Company.name }
     total_value_cents { ::Faker::Number.number(digits: 4) }
-    emails { ::Faker::Internet.email }
     user
   end
 end

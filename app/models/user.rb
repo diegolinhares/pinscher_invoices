@@ -13,7 +13,7 @@ class User < ::ApplicationRecord
             uniqueness: { case_sensitive: false },
             format: { with: ::URI::MailTo::EMAIL_REGEXP }
 
-  normalizes :email, with: ->(value) { value.downcase.strip }
+  normalizes :email, with: ->(value) { value.strip }
 
   delegate :token_value, to: :token, prefix: false, allow_nil: false
 end
