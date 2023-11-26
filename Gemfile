@@ -22,6 +22,7 @@ gem 'turbo-rails'
 gem 'money-rails'
 gem 'pagy'
 gem 'prawn'
+gem 'sidekiq'
 gem 'u-case', '~> 4.5.1'
 
 group :development, :test do
