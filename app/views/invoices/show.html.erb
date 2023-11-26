@@ -1,7 +1,10 @@
 <%= turbo_frame_tag "invoices" do %>
-  <article class="message">
+  <article class="message is-primary">
     <div class="message-header">
       <p>Invoice Details</p>
+      <%= link_to 'Download PDF', invoices_pdf_export_path(invoice, format: :pdf),
+                  class: 'button is-small is-light',
+                  target: '_blank' %>
     </div>
     <div class="message-body content">
       <p><strong>Issue Date:</strong> <%= invoice.issue_date %></p>

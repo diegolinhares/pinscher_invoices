@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :invoices do
+    resources :pdf_exports, only: :show
+  end
+
   namespace :tokens do
     resource :generation, only: :create
     resource :resend, only: :create
