@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_26_022455) do
     t.text "company", null: false
     t.text "billing_to", null: false
     t.integer "total_value_cents", null: false
-    t.string "emails", null: false, array: true
+    t.string "emails", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
