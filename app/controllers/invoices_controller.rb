@@ -50,9 +50,15 @@ class InvoicesController < ::ApplicationController
   # rubocop:enable Metrics/MethodLength
 
   def show
-    invoice = ::Invoice.find_by(id: params[:id], user_id: ::Current.user.id)
+    input = {
+      invoice_id: params[:id],
+      user_id: ::Current.user.id
+    }
 
-    render 'invoices/show', locals: { invoice: }
+    ::Invoices::Show.call(input) do |on|
+      on.success { render_invoice(_1[:invoice]) }
+      on.failure(:invoice_not_found) { render_not_found }
+    end
   end
 
   private
@@ -66,6 +72,16 @@ class InvoicesController < ::ApplicationController
     pagy, invoices = pagy(invoices, items: 10, link_extra: 'data-turbo-action="advance"')
 
     render 'invoices/index', locals: { invoices:, pagy: }
+  end
+
+  def render_invoice(invoice)
+    render 'invoices/show', locals: { invoice: }
+  end
+
+  def render_not_found
+    flash[:alert] = 'Invoice not found'
+
+    redirect_to invoices_path, status: :found
   end
 
   def redirect_invoice(invoice)
