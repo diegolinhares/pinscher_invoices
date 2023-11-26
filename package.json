@@ -3,6 +3,7 @@
   "private": "true",
   "dependencies": {
     "bulma": "^0.9.4",
+    "debounce": "^2.0.0",
     "sass": "^1.69.5"
   },
   "scripts": {

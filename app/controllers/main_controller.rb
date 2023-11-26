@@ -3,5 +3,12 @@
 class MainController < ::ApplicationController
   before_action :authenticate_user!
 
-  def index; end
+  def index
+    case ::Current.user
+    in ::User
+      redirect_to invoices_path
+    else
+      render 'main/index'
+    end
+  end
 end

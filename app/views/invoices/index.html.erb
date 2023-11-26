@@ -1,0 +1,68 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title">Invoices</h1>
+    <%= form_with(url: invoices_path, method: :get,
+        data: {
+          turbo_frame: "invoices",
+          turbo_action: "advance",
+          controller: "form",
+          action: "input->form#submit"
+        }, class: "box") do |form| %>
+      <div class="columns is-multiline is-align-items-flex-end">
+        <div class="column is-4">
+          <div class="field">
+            <%= form.label :issue_date, "Issue Date" %>
+            <%= form.date_field :issue_date, class: "input" %>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="field">
+            <%= form.label :invoice_number, "Invoice Number" %>
+            <%= form.text_field :invoice_number, class: "input" %>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="field is-grouped ">
+            <div class="control">
+              <%= form.submit "Filter", class: "button is-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <%= turbo_frame_tag "invoices", autoscroll: true, data: { autoscroll_block: "start" }  do %>
+      <% if invoices.any? %>
+        <table class="table is-fullwidth is-striped">
+          <thead>
+            <tr>
+              <th class="has-text-centered">Number</th>
+              <th class="has-text-centered">Issue Date</th>
+              <th class="has-text-centered">Company</th>
+              <th class="has-text-centered">Total Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% invoices.each do |invoice| %>
+              <tr>
+                <td class="has-text-centered"><%= invoice_number_formatter(invoice.invoice_number) %></td>
+                <td class="has-text-centered"><%= invoice.issue_date %></td>
+                <td class="has-text-centered"><%= invoice.company %></td>
+                <td class="has-text-centered"><%= number_to_currency(invoice.total_value) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <% if pagy.pages > 1 %>
+          <div class="pagy-nav">
+            <%== pagy_bulma_nav(pagy) %>
+          </div>
+        <% end %>
+      <% else %>
+        <% render "invoices/no_invoices" %>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+

@@ -72,7 +72,7 @@ RSpec.describe 'Main', type: :system, js: true do
       click_on 'Login'
 
       # Assert
-      expect(page).to have_current_path(root_path)
+      expect(page).to have_current_path(invoices_path)
       expect(page).to have_text('Signed in successfully')
     end
 

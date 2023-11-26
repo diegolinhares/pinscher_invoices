@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resource :resend, only: :create
   end
 
+  resources :invoices, only: %i[index]
+
   resource :session, only: %i[create show destroy], param: :token
 
   get 'up' => 'rails/health#show', as: :rails_health_check
