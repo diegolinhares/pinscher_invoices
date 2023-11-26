@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Main', type: :system, js: true do
+RSpec.describe 'Authentication', type: :system, js: true do
   include ::EmailSpec::Helpers
   include ::EmailSpec::Matchers
 
