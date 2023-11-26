@@ -5,7 +5,18 @@
     </div>
     <div class="navbar-menu">
       <div class="navbar-end">
-        <%= link_to "Home", root_path, class: "navbar-item" %>
+        <div class="navbar-item">
+          <%= link_to "Home", root_path, class: "navbar-item" %>
+        </div class="navbar-item">
+
+        <% if ::Current.user %>
+          <div class="navbar-item">
+            <%= ::Current.user.email %>
+          </div>
+          <div class="navbar-item">
+            <%= button_to "Logout", session_path, method: :delete, class: "button is-light" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

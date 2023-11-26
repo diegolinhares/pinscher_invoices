@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "login" do %>
+  <%= form_with(url: session_path, method: :post, data: { turbo: false}) do |form| %>
+    <div class="field">
+      <%= form.label :token, class: "label" %>
+      <div class="control">
+        <%= form.text_field :token, placeholder: "Inform your access token", class: "input" %>
+      </div>
+    </div>
+    <div class="control has-text-centered">
+      <%= form.submit "Login", class: "button is-primary" %>
+    </div>
+  <% end %>
+<% end %>

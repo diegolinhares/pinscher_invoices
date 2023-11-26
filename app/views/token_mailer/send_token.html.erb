@@ -2,4 +2,5 @@
   <h1>Access Token</h1>
   <p>Here's your access token:</p>
   <p><%= token %></p>
+  <%= link_to "Use Token", session_url(token: token), method: :get %>
 </div>
