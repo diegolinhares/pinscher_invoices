@@ -1,10 +1,22 @@
 # frozen_string_literal: true
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+
+user = ::User.find_or_create_by!(email: 'elonmusk@pinscher.com')
+
+::Token.find_or_create_by!(user:) do |token|
+  token.token_value = '4f91348a9fe9936f785ee14d799ee4813a1e92dc'
+  token.active = true
+  token.expires_at = 20.years.from_now
+end
+
+if ::Invoice.count < 200
+  200.times do
+    ::Invoice.create!(
+      user:,
+      company: ::Faker::Company.name,
+      billing_to: ::Faker::Company.name,
+      total_value: ::Faker::Number.number(digits: 4),
+      issue_date: ::Faker::Date.in_date_period,
+      emails: [::Faker::Internet.email]
+    )
+  end
+end
