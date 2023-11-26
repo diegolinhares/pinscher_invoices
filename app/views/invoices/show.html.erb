@@ -1,0 +1,24 @@
+<%= turbo_frame_tag "invoices" do %>
+  <article class="message">
+    <div class="message-header">
+      <p>Invoice Details</p>
+    </div>
+    <div class="message-body content">
+      <p><strong>Issue Date:</strong> <%= invoice.issue_date %></p>
+      <p><strong>Company:</strong> <%= invoice.company %></p>
+      <p><strong>Billing To:</strong> <%= invoice.billing_to %></p>
+      <p><strong>Total Value:</strong> <%= number_to_currency(invoice.total_value) %></p>
+
+      <% if invoice.invoice_emails.any? %>
+        <div class="email-list">
+          <strong>Emails:</strong>
+          <ul>
+            <% invoice.invoice_emails.each do |invoice_email| %>
+              <li><%= invoice_email.email %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </article>
+<% end %>

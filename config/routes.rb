@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     resource :resend, only: :create
   end
 
-  resources :invoices, only: %i[index]
+  resources :invoices, only: %i[new create index show]
+  resources :invoice_emails, only: %i[new], param: :index
 
   resource :session, only: %i[create show destroy], param: :token
 

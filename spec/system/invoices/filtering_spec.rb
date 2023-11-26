@@ -2,9 +2,9 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Invoices', type: :system, js: true do
+RSpec.describe 'Invoices::Filtering', type: :system, js: true do
   before do
-    driven_by :selenium, using: :headless_chrome
+    driven_by :selenium, using: :chrome
   end
 
   context 'when user is logged in' do

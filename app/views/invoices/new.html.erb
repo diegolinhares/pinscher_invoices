@@ -1,0 +1,56 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title">New Invoice</h1>
+
+    <%= form_with(model: invoice, method: :post,
+          data: {
+            controller: "form",
+            action: "input->form#submit"
+          }) do |form| %>
+
+      <% if invoice.errors.any? %>
+        <article class="message is-danger">
+          <div class="message-header">
+            <p><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</p>
+          </div>
+          <div class="message-body">
+            <ul>
+              <% invoice.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </article>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :issue_date, class: 'label' %>
+        <%= form.date_field :issue_date, class: 'input', required: true %>
+      </div>
+
+      <div class="field">
+        <%= form.label :company, class: 'label' %>
+        <%= form.text_field :company, class: 'input', required: true %>
+      </div>
+
+      <div class="field">
+        <%= form.label :billing_to, class: 'label' %>
+        <%= form.text_area :billing_to, class: 'input', required: true %>
+      </div>
+
+      <div class="field">
+        <%= form.label :total_value, class: 'label' %>
+        <%= form.text_field :total_value, class: 'input' %>
+      </div>
+
+      <div class="field">
+        <div id="invoice-emails">
+          <%= render partial: 'email', collection: invoice.invoice_emails, as: :invoice_email %>
+        </div>
+        <%= link_to 'Add another email', new_invoice_email_path, data: { turbo_stream: true }, class: "button mt-4" %>
+      </div>
+
+      <%= form.submit 'Submit', class: 'button is-primary' %>
+    <% end %>
+  </div>
+</section>

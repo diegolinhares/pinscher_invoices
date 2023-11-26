@@ -1,0 +1,6 @@
+<div class="field">
+  <%= fields_for "invoice[invoice_emails_attributes][#{invoice_email.object_id}]", invoice_email do |ff| %>
+    <%= ff.label :email, class: 'label' %>
+    <%= ff.text_field :email, class: 'input', required: true %>
+  <% end %>
+</div>

@@ -1,6 +1,11 @@
 <section class="section">
   <div class="container">
     <h1 class="title">Invoices</h1>
+
+    <div class="field is-grouped is-grouped-right">
+      <%= link_to 'New Invoice', new_invoice_path, class: "button is-primary" %>
+    </div>
+
     <%= form_with(url: invoices_path, method: :get,
         data: {
           turbo_frame: "invoices",
@@ -24,7 +29,7 @@
         <div class="column is-4">
           <div class="field is-grouped ">
             <div class="control">
-              <%= form.submit "Filter", class: "button is-primary" %>
+              <%= form.submit "Filter", class: "button" %>
             </div>
           </div>
         </div>
@@ -65,4 +70,3 @@
     <% end %>
   </div>
 </section>
-
