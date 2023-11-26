@@ -3,6 +3,7 @@
 class User < ::ApplicationRecord
   encrypts :email, deterministic: true
 
+  has_many :invoices, dependent: :delete_all
   has_many :tokens, dependent: :delete_all
 
   has_one :token, -> { where(active: false).order(created_at: :desc) }, inverse_of: :user, dependent: :destroy
