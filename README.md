@@ -1,5 +1,6 @@
 # README
 
+![Pinscher](images/pinscher.png)
 
 # Tooling
 
