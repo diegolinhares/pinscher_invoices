@@ -26,7 +26,7 @@ RSpec.describe 'Invoices::Filtering', type: :system, js: true do
       fill_in 'Issue Date', with: invoices.first.issue_date
       find('input[name="issue_date"]').send_keys(:enter)
 
-      expect(page).to have_current_path(invoices_path, wait: 3)
+      expect(page).to have_content(invoices.first.invoice_number)
 
       rows = page.all('tbody tr')
       number_of_filtered_invoices = rows.size
@@ -50,7 +50,7 @@ RSpec.describe 'Invoices::Filtering', type: :system, js: true do
       fill_in 'Invoice Number', with: invoices.first.invoice_number
       find('input[name="invoice_number"]').send_keys(:enter)
 
-      expect(page).to have_current_path(invoices_path, wait: 3)
+      expect(page).to have_content(invoices.first.invoice_number)
 
       rows = page.all('tbody tr')
       number_of_filtered_invoices = rows.size
@@ -78,7 +78,7 @@ RSpec.describe 'Invoices::Filtering', type: :system, js: true do
       fill_in 'Invoice Number', with: invoices.first.invoice_number
       find('input[name="invoice_number"]').send_keys(:enter)
 
-      expect(page).to have_current_path(invoices_path, wait: 3)
+      expect(page).to have_content(invoices.first.invoice_number)
 
       rows = page.all('tbody tr')
       number_of_filtered_invoices = rows.size

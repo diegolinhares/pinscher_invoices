@@ -25,8 +25,12 @@ class InvoicesController < ::ApplicationController
     }
 
     ::Invoices::Create.call(input) do |on|
-      on.success { redirect_invoice(_1[:invoice]) }
+      on.success do
+        generate_invoice_pdf(_1[:invoice])
+        redirect_invoice(_1[:invoice])
+      end
       on.failure(:invalid) { render_form_errors(_1[:invoice]) }
+      on.unknown { raise _1.inspect.errors }
     end
   end
   # rubocop:enable Metrics/MethodLength
@@ -58,6 +62,7 @@ class InvoicesController < ::ApplicationController
     ::Invoices::Show.call(input) do |on|
       on.success { render_invoice(_1[:invoice]) }
       on.failure(:invoice_not_found) { render_not_found }
+      on.unknown { raise _1.inspect.errors }
     end
   end
 
@@ -92,5 +97,9 @@ class InvoicesController < ::ApplicationController
 
   def render_form_errors(invoice)
     render 'invoices/new', locals: { invoice: }, status: :unprocessable_entity
+  end
+
+  def generate_invoice_pdf(invoice)
+    ::Invoices::Pdf::GenerateTempfileJob.perform_later(invoice.id)
   end
 end

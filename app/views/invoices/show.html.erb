@@ -12,15 +12,17 @@
       <p><strong>Billing To:</strong> <%= invoice.billing_to %></p>
       <p><strong>Total Value:</strong> <%= number_to_currency(invoice.total_value) %></p>
 
-      <% if invoice.invoice_emails.any? %>
-        <div class="email-list">
-          <strong>Emails:</strong>
-          <ul>
-            <% invoice.invoice_emails.each do |invoice_email| %>
-              <li><%= invoice_email.email %></li>
-            <% end %>
-          </ul>
-        </div>
+      <% if ::Current.user %>
+        <% if invoice.invoice_emails.any? %>
+          <div class="email-list">
+            <strong>Emails:</strong>
+            <ul>
+              <% invoice.invoice_emails.each do |invoice_email| %>
+                <li><%= invoice_email.email %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </article>

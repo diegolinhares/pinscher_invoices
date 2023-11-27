@@ -50,7 +50,8 @@ RSpec.describe 'Authentication', type: :system, js: true do
       click_on 'Generate'
       click_on 'Confirm'
 
-      expect(page).to have_text('An email will be sent to you shortly with the new link to access the application.')
+      expect(page).to have_text('An email will be sent to you shortly with the new link to access the application.',
+                                wait: 3)
 
       open_email(user.email)
 

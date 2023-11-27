@@ -4,6 +4,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   namespace :invoices do
+    resources :public_displays, only: :show
     resources :pdf_exports, only: :show
   end
 
