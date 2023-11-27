@@ -124,25 +124,41 @@ This command will execute all the tests, including use case tests, integration t
 
 Note: Integration tests use headless Chrome, which may have dependencies or configurations that could cause issues on some machines. Ensure that your system meets the requirements for headless Chrome to avoid any problems during testing.
 
+### Manual Testing of Email and Token
+
+#### Email Testing
+
+- Use `elonmusk@pinscher.com` to check for the system's email delivery.
+
+#### Token Testing for Login
+
+- Use the token `4f91348a9fe9936f785ee14d799ee4813a1e92dc` for testing the login process.
+- Enter the token on the login page and verify if access is granted.
+
 # User Authentication
 
 ## Access Tokens
 
-- **Multiple Tokens**: Each user account can be associated with multiple access tokens.
-- **Token Attributes**: Each token has these key attributes:
-  - **Value**: A unique identifier used for authentication.
-  - **Expiration Date**: The date and time when the token becomes invalid.
-  - **Active Status**: Indicates whether the token is currently in use.
+Each user account can be associated with multiple access tokens.
+
+Each token has these key attributes:
+
+- **Value**: A unique identifier used for authentication.
+- **Expiration Date**: The date and time when the token becomes invalid.
+- **Active Status**: Indicates whether the token is currently in use.
 
 ## User Login and Logout
 
-- **Login Process**: A valid, active token is required for user login. This is verified during the login attempt.
-- **Token Activation**: Users can activate tokens in two ways:
-  1. **Generate New Token**: Users request a new token via email. They receive an activation link to enable the token.
-  2. **Login with Existing Token**: Users can also log in by entering a valid token.
+A valid, active token is required for user login. This is verified during the login attempt.
 
-- **Email Activation**: A new token requires activation through a link sent to the user's email. This activates the token and logs the user in.
-- **One Active Token Rule**: Only one token can be active at a time. Generating a new token deactivates the previous one, but the old token remains active until the new one is activated through the email link.
+Users can activate tokens in two ways:
+
+1. **Generate New Token**: Users request a new token via email. They receive an activation link to enable the token.
+2. **Login with Existing Token**: Users can also log in by entering a valid token.
+
+A new token requires activation through a link sent to the user's email. This activates the token and logs the user in.
+
+Only one token can be active at a time. Generating a new token deactivates the previous one, but the old token remains active until the new one is activated through the email link.
 
 ## Email and Token Encryption
 
@@ -180,7 +196,7 @@ Note: Integration tests use headless Chrome, which may have dependencies or conf
 
 ## Notes
 
-- **Email Visualization with `letter_opener` Gem**: For development purposes, the `letter_opener` gem is used. This allows developers to view the email delivery process as if they were a user, with emails opening in a web browser window. It simulates the experience of a user receiving and opening the invoice email in their inbox.
+- For development purposes, the `letter_opener` gem is used. This allows developers to view the email delivery process as if they were a user, with emails opening in a web browser window. It simulates the experience of a user receiving and opening the invoice email in their inbox.
 
 ## Extensive Use of Hotwire
 
@@ -196,6 +212,9 @@ Note: Integration tests use headless Chrome, which may have dependencies or conf
 - The code is divided into modules, each responsible for a specific set of functions. This makes maintenance and testing more manageable, as changes in one module do not heavily impact the others.
 - By sticking to Rails best practices and ensuring clear separation of concerns, the codebase is designed to be easily understandable and maintainable, reducing long-term technical complications.
 
+# Code Quality
+
+This project emphasizes code quality by using Lefthook, a tool that takes the place of a traditional Continuous Integration (CI) system. Lefthook is configured to run a series of checks and tests before each commit, ensuring that only high-quality code is integrated into the main codebase. This approach streamlines the development process while maintaining strict standards for code quality.
 
 # API Documentation
 
