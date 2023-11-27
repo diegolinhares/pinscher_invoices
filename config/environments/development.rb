@@ -33,7 +33,6 @@ Rails.application.configure do
   config.active_support.disallowed_deprecation_warnings = []
   config.active_record.migration_error = :page_load
   config.active_record.verbose_query_logs = true
-  config.active_job.queue_adapter = :sidekiq
   config.active_job.verbose_enqueue_logs = true
   config.assets.quiet = true
   config.action_controller.raise_on_missing_callback_actions = true

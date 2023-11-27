@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'sidekiq/web'
-
 Rails.application.routes.draw do
   namespace :invoices do
     resources :public_displays, only: :show
@@ -20,6 +18,5 @@ Rails.application.routes.draw do
 
   get 'up' => 'rails/health#show', as: :rails_health_check
 
-  mount ::Sidekiq::Web => '/sidekiq'
   root 'main#index'
 end
