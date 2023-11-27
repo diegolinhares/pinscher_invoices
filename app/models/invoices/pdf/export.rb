@@ -22,7 +22,7 @@ module Invoices
       end
 
       def generate_pdf(invoice:, **)
-        pdf = ::Invoices::Pdf::Generator.call(invoice:)
+        pdf = Generator.call(invoice:)
 
         Success(:ok, result: { pdf: })
       end
