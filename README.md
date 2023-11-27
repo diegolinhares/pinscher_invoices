@@ -2,6 +2,9 @@
 
 ![Pinscher](images/pinscher.png)
 
+# Video
+Here's a video with the [application working](https://youtu.be/cZqwpbxnQCo)
+
 # Tooling
 
 ## Versions
