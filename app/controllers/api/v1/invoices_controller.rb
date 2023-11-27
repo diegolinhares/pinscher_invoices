@@ -5,6 +5,30 @@ module Api
     class InvoicesController < ApplicationController
       before_action :authenticate
 
+      # rubocop:disable Metrics/MethodLength
+      # rubocop:disable Metrics/AbcSize
+      def create
+        input = {
+          issue_date: invoice_params[:issue_date],
+          company: invoice_params[:company],
+          billing_to: invoice_params[:billing_to],
+          total_value: invoice_params[:total_value],
+          invoice_emails_attributes: invoice_params[:invoice_emails_attributes],
+          user_id: current_user.id
+        }
+
+        ::Invoices::Create.call(input) do |on|
+          on.success do
+            generate_invoice_pdf(_1[:invoice])
+            render_invoice(_1[:invoice])
+          end
+          on.failure(:invalid) { render_invoice_errors(_1[:invoice]) }
+          on.unknown { raise _1.inspect.errors }
+        end
+      end
+      # rubocop:enable Metrics/MethodLength
+      # rubocop:enable Metrics/AbcSize
+
       def show
         input = {
           invoice_id: params[:id],
@@ -20,8 +44,21 @@ module Api
 
       private
 
+      def invoice_params
+        params.require(:invoice).permit(:issue_date, :company, :billing_to, :total_value,
+                                        invoice_emails_attributes: %i[id email _destroy])
+      end
+
+      def generate_invoice_pdf(invoice)
+        ::Invoices::Pdf::GenerateTempfileJob.perform_later(invoice.id)
+      end
+
       def render_invoice(invoice)
         render json: invoice, status: :ok
+      end
+
+      def render_invoice_errors(invoice)
+        render json: { errors: invoice.errors }, status: :unprocessable_entity
       end
 
       def render_not_found
