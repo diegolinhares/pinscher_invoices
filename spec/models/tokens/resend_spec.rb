@@ -33,7 +33,7 @@ RSpec.describe Tokens::Resend, type: :use_case do
       result = described_class.call(input)
 
       # Assert
-      expect(result).to be_success
+      expect(result.success?).to be_truthy
       expect(result[:user]).to eq(user)
       expect(user.token).to be_present
     end

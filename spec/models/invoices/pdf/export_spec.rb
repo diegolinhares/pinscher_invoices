@@ -19,7 +19,7 @@ RSpec.describe ::Invoices::Pdf::Export, type: :use_case do
         result = described_class.call(input)
 
         # Assert
-        expect(result).to be_success
+        expect(result.success?).to be_truthy
         expect(result[:pdf]).to be_a(::Prawn::Document)
       end
     end

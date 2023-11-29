@@ -50,7 +50,7 @@ RSpec.describe Tokens::Activate, type: :use_case do
       result = described_class.call(input)
 
       # Assert
-      expect(result).to be_success
+      expect(result.success?).to be_truthy
       expect(result[:user]).to be_present
     end
   end

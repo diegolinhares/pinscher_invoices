@@ -47,7 +47,7 @@ RSpec.describe Tokens::Generate, type: :use_case do
       result = described_class.call(input)
 
       # Assert
-      expect(result).to be_success
+      expect(result.success?).to be_truthy
       expect(result[:user]).to be_persisted
       expect(result[:user].token).to be_present
     end

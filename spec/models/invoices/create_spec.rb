@@ -23,7 +23,7 @@ RSpec.describe Invoices::Create, type: :use_case do
       result = described_class.call(input)
 
       # Assert
-      expect(result).to be_success
+      expect(result.success?).to be_truthy
       expect(result[:invoice]).to be_persisted
       expect(result[:invoice].invoice_emails.first.email).to eq(email)
     end
